@@ -1,0 +1,31 @@
+name : Reusable workflow- CALLED
+on :
+    workflow_call:
+        inputs:
+            name:
+                description: 'input descrip'
+                type: string
+                required : false
+        secrets:
+            access-token:
+                description: 'access token secert'
+                required: true
+
+jobs:
+    checkout-job:
+        runs-on : ubuntu-latest
+        steps:
+            - uses : actions/checkout@v3
+            - run : ls -a
+    log-con-input:
+        runs-on: ubuntu-latest
+        steps:
+            - name : display github context from resusable -called WF
+              run : echo "${{toJson(github)}}"
+            - name : display name input from resusable -called WF
+              run: echo "${{inputs.name}}"
+            - name : display secret input from resusable -called WF
+              run: echo "${{secrets.access-token}}"
+
+
+
