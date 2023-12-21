@@ -3,7 +3,7 @@ on :
     workflow_call:
         inputs:
             name:
-                description: 'input descrip'
+                description: 'input description'
                 type: string
                 required : false
         secrets:
@@ -21,11 +21,11 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name : display github context from resusable -called WF
-              run : echo "${{toJson(github)}}"
+              run : echo '${{toJson(github)}}'
             - name : display name input from resusable -called WF
-              run: echo "${{inputs.name}}"
+              run: echo ${{inputs.name}}
             - name : display secret input from resusable -called WF
-              run: echo "${{secrets.access-token}}"
+              run: echo ${{secrets.access-token}}
 
 
 
